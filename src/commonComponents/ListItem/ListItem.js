@@ -1,13 +1,20 @@
-import React from 'react';
-import { Checkbox, List, Button, Tooltip } from 'antd';
+import {List, Tooltip, Button, Checkbox} from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-/* params
-  checked,
-  content,
-  time
+
+
+/* 
+  @params {
+    content: string,
+    time: string,
+    index: number,
+    itemStyle: object,
+    handleClick: function,
+    handleEdit: function,
+    handleDelete: function
+  }
 */
 
-const TodoItemUI = (props) => {
+const ItemList = (props) => {
   return (
     <List.Item
       actions={
@@ -17,7 +24,7 @@ const TodoItemUI = (props) => {
             <Button type="primary" shape="circle" icon={<EditOutlined />} onClick={props.handleEdit}/>
           </Tooltip>,
           <Tooltip title="delete">
-            <Button type="primary" shape="circle" icon={<DeleteOutlined />} onClick={props.handleDelete}/>
+            <Button type="primary" shape="circle" icon={<DeleteOutlined />} onClick={()=>{props.handleDelete(props.index)}}/>
           </Tooltip>,
         ]
       }
@@ -26,11 +33,12 @@ const TodoItemUI = (props) => {
         className="textShow" 
         checked={props.checked} 
         style={props.itemStyle}
-        onClick={props.handleClick}
+        onClick={()=>{props.handleClick(props.index)}}
       >
         {props.content}
       </Checkbox>
     </List.Item>
   )
 }
-export default TodoItemUI;
+
+export default ItemList;

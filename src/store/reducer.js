@@ -1,19 +1,9 @@
 import {ADD_TODO_ITEM, COMPLETE_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_VALUE, EDIT_TODO_ITEM} from './actionType'
 
 const defaultState = {
-  list: [
-    // {
-    //   content: '好好吃饭',
-    //   time: '2020-10-20 14:24:22',
-    //   status: 0
-    // },
-    // {
-    //   content: '不好好吃饭',
-    //   time: '2020-10-20 14:22:22',
-    //   status: 1
-    // }
-  ]
+  list: []
 }
+
 
 const reducer = (state = defaultState, action) => {
   if (action.type === INIT_LIST_VALUE) {

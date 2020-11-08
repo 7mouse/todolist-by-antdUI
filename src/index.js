@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './component/TodoList/TodoList.js';
+import { Provider } from 'react-redux';
+import TodoListPanel from '@components/TodoListPanel/TodoListPanel.js';
+import store from '@/store'
 import './style.css';
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
-    <TodoList />,
+  <Provider store={store}>
+    <TodoListPanel />
+  </Provider>,
   document.getElementById('root')
 );
 

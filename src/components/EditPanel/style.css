@@ -1,4 +1,4 @@
-.AddPanel {
+.Panel {
   display: flex;
   position: fixed;
   background-color: rgba(0,0,0,0.8);
@@ -7,12 +7,19 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  left: 0;
   top: 0;
+  left: 0;
 }
-.Panel {
+.EditPanel {
+  background-color: #fff;
+  padding: 3.556vw 2.778vw 11.111vw;
+  border-radius: 10px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
