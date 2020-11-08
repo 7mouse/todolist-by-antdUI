@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import TodoListPanel from '@components/TodoListPanel/TodoListPanel.js';

@@ -1,7 +1,5 @@
 import Header from '@components/Header/Header.js'
-import List from '@components/List/List.js'
-import TodoList from '@components/List/TodoList.js'
-import DidList from '@components/List/DidList.js'
+import ListPanel from '@components/List/ListPanel.js'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@store/actionCreators'
@@ -15,7 +13,6 @@ const TodoListPanel = (props) => {
 
   // 初始化store
   useEffect(()=>{
-    console.log('render')
     dispatch(actionCreators.getInitListValueAction(
       (window.localStorage 
         ? (JSON.parse(window.localStorage.getItem('list')) || []) 
@@ -34,7 +31,7 @@ const TodoListPanel = (props) => {
       //   }
       // ]
     ))
-  }, []); //采用空数组, 仅在初次渲染执行
+  }, [dispatch]); //采用dispatch, 不变, 仅在初次渲染执行, 防止循环渲染
 
   // 存储store 变化 => 修改list
   useEffect(()=> {
@@ -55,7 +52,7 @@ const TodoListPanel = (props) => {
     <div className="todoListPanel" >
       <Header count={todoList.length}/>
       <AddBtn/>
-      <List 
+      <ListPanel
         todoList={todoList}
         didList={didList}
       />
