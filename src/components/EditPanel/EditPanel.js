@@ -26,7 +26,13 @@ const EditPanel = (props) => {
       // input.setSelectionRage(0,inputValue.length);
       // 设置光标位置失败
     }
-  })
+    // if (props.content !== '') {
+      setInputValue(props.content)
+    // }
+    // if (props.time !== undefined) {
+      setTime(props.time);  
+    // }
+  },[props.content, props.time]);
 
   return (
     <Fragment>
@@ -46,7 +52,7 @@ const EditPanel = (props) => {
               <div>
                 <DatePicker 
                   showTime 
-                  value={time === '' ? '' : moment(time)}
+                  value={time ? moment(time): ''}
                   onChange={handleDateChange}
                 />
                 <Button onClick={handleSave}>保存</Button>
@@ -70,9 +76,13 @@ const EditPanel = (props) => {
       alert('日期不能为空');
     }
     if (flag) {
-      setInputValue('');
-      setTime('')
-      props.onOk(inputValue, time);
+      if (inputValue !== props.content || time !== props.time) {
+        props.onOk(inputValue, time, props.index);
+        setInputValue('');
+        setTime('')
+      } else {
+        alert('未修改')
+      }
     }
   }
   function handleInputChange(e) {

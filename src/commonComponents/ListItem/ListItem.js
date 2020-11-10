@@ -17,7 +17,6 @@ import Context from '@/context.js'
 
 const ItemList = (props) => {
   const handleEdit = useContext(Context);
-  // console.log(handleEdit)
   return (
     <List.Item
       actions={

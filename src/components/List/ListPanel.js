@@ -11,6 +11,7 @@ const ListPanel = (props) => {
   const [isShow, setIsShow] = useState(false);
   const [content, setContent] = useState('');
   const [time, setTime] = useState('');
+  const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
   return (
     <Context.Provider
@@ -19,8 +20,9 @@ const ListPanel = (props) => {
       <EditPanel 
         title={"编辑项目"}
         isShow={isShow}
-        content={content}
         time={time}
+        index={index}
+        content={content}
         setShow={()=>setIsShow(false)}
         onOk={handleOk}
       />
@@ -32,13 +34,14 @@ const ListPanel = (props) => {
       />
     </Context.Provider>      
   )
-  function handleEdit(content, time) {
+  function handleEdit(content, time, index) {
     setContent(content);
     setTime(time);
+    setIndex(index);
     setIsShow(true);
   }
   function handleOk(inputValue, time, index) {
-    dispatch(actionCreators.getEditTodoItemAction(inputValue, time));
+    dispatch(actionCreators.getEditTodoItemAction(index, inputValue, time));
     setIsShow(false);
   }
 }
