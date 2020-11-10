@@ -1,4 +1,11 @@
 .todoListPanel {
-  width: 600px;
+  width: 60vw;
   margin: 0 auto;
+  min-width: 300px;
+}
+
+@media screen and (max-width: 800px) {
+  .todoListPanel {
+    width: 90vw;
+  }
 }
